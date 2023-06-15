@@ -1,15 +1,12 @@
 use std::io;
-use chrono::Datelike;
+use chrono::{Datelike, Utc, Local};
 
 fn main() {
     let name = get_name();
 
-    let daysoftheweek = [ "ma", "di","wo","do","vr","za","zo" ];
-
-    println!("Welcome {}", name);
-    for day in daysoftheweek.iter() {
-        println!("The day today is: {}", day);
-    }
+    let today = Local::today();
+    let day_name = today.format("%A").to_string(); 
+    println!("Welcome {}\nThe day today is: {}", name, day_name);
 }
 
 fn get_name() -> String {
